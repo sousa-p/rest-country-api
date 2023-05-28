@@ -1,0 +1,18 @@
+<ion-card>
+  <img class="pais-card__flag" alt="Flag of {{ country.name }}" src="{{ country.flags.png }}" />
+  <ion-card-header>
+    <ion-card-title>{{ country.name }}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-text>
+      <p><b>Population:</b> {{country.population}}</p>
+    </ion-text>
+    <ion-text>
+      <p><b>Region:</b> {{country.region}}</p>
+    </ion-text>
+    <ion-text>
+      <p><b>Capial:</b> {{country.capial}}</p>
+    </ion-text>
+  </ion-card-content>
+</ion-card>

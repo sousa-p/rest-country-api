@@ -1,0 +1,41 @@
+<ion-content [fullscreen]="true">
+  <ion-row class="ion-justify-content-center content">
+    <ion-col size="11">
+      <ion-row class="ion-justify-content-between">
+        <ion-col size="4">
+          <ion-searchbar class="searchbar-country" placeholder="Search for a country"
+            [debounce]="500"
+            [(ngModel)]="filterParams.searchbar"
+            (ionInput)="filter()"
+          ></ion-searchbar>
+        </ion-col>
+        <ion-col size="2">
+          <ion-list class="filter-region">
+            <ion-item>
+              <ion-select aria-label="Regions" interface="popover" placeholder="Filter by Region"
+                [(ngModel)]="filterParams.region"
+                (ionChange)="filter()"
+              >
+                <ion-select-option value="all">All Regions</ion-select-option>
+                <ion-select-option value="Africa">Africa</ion-select-option>
+                <ion-select-option value="Americas">America</ion-select-option>
+                <ion-select-option value="Asia">Asia</ion-select-option>
+                <ion-select-option value="Europe">Europe</ion-select-option>
+                <ion-select-option value="Oceania">Oceania</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-around">
+        <ng-container *ngFor="let country of countriesFiltred">
+          <ion-col size="4">
+            <app-pais-card
+              [country]="country"
+            ></app-pais-card>
+          </ion-col>
+        </ng-container>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>
