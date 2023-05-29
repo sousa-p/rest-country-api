@@ -1,0 +1,22 @@
+.content {
+  padding-top: 56px !important;
+}
+
+.back-btn {
+  margin: 6vh 0;
+  width: 150px;
+  --background: transparent;
+  --box-shadow: 0 0 6px 0 rgb(0, 0, 0, 0.5);
+}
+
+.country {
+  &__flag {
+    margin: 0 auto;
+  }
+}
+
+.border-countries {
+  &__country {
+    border-radius: 4px;
+  }
+}

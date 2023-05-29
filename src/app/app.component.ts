@@ -6,8 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  darkTheme = true;
+  storage: any = {
+    get() {
+      return JSON.parse(localStorage.getItem('darkTheme') as string) || false;
+    },
+    set (value: boolean) {
+      localStorage.setItem('darkTheme', JSON.stringify(value));
+    }
+  };
+  darkTheme: boolean = this.storage.get();
+
   switchTheme () {
     this.darkTheme = !this.darkTheme;
+    this.storage.set(this.darkTheme);
   }
 }

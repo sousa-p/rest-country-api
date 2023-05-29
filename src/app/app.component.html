@@ -1,7 +1,7 @@
 <ion-app [class.dark-theme]="darkTheme">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Where in the world?</ion-title>
+      <ion-title class="header__title">Where in the world?</ion-title>
       <ion-buttons slot="end">
         <ion-button class="header__theme-btn" (click)="switchTheme()">
           <div *ngIf="darkTheme;then lightThemeBtn else darkThemeBtn">here is ignored</div>

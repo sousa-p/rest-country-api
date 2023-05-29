@@ -1,4 +1,4 @@
-<ion-card>
+<ion-card routerLink="/country" [state]="country" class="pais-card">
   <img class="pais-card__flag" alt="Flag of {{ country.name }}" src="{{ country.flags.png }}" />
   <ion-card-header>
     <ion-card-title>{{ country.name }}</ion-card-title>
@@ -12,7 +12,7 @@
       <p><b>Region:</b> {{country.region}}</p>
     </ion-text>
     <ion-text>
-      <p><b>Capial:</b> {{country.capial}}</p>
+      <p><b>Capial:</b> {{country.capital}}</p>
     </ion-text>
   </ion-card-content>
 </ion-card>

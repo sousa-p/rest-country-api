@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./pais-card.component.scss'],
 })
 export class PaisCardComponent  implements OnInit {
-  @Input () country!: any
+  @Input () country!: any;
   constructor() { }
 
   ngOnInit() {}

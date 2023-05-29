@@ -1,15 +1,15 @@
 <ion-content [fullscreen]="true">
-  <ion-row class="ion-justify-content-center content">
+  <ion-row class="ion-justify-content-center ion-align-items-center content">
     <ion-col size="11">
       <ion-row class="ion-justify-content-between">
-        <ion-col size="4">
+        <ion-col size="12" sizeMd="7" sizeLg="4">
           <ion-searchbar class="searchbar-country" placeholder="Search for a country"
             [debounce]="500"
             [(ngModel)]="filterParams.searchbar"
             (ionInput)="filter()"
           ></ion-searchbar>
         </ion-col>
-        <ion-col size="2">
+        <ion-col size="6" sizeMd="3">
           <ion-list class="filter-region">
             <ion-item>
               <ion-select aria-label="Regions" interface="popover" placeholder="Filter by Region"
@@ -27,14 +27,17 @@
           </ion-list>
         </ion-col>
       </ion-row>
-      <ion-row class="ion-justify-content-around">
-        <ng-container *ngFor="let country of countriesFiltred">
-          <ion-col size="4">
+      <ion-row class="ion-justify-content-around ion-padding">
+        <ng-container *ngFor="let country of countriesOnPage">
+          <ion-col size="12" sizeMd="6" sizeLg="4">
             <app-pais-card
               [country]="country"
             ></app-pais-card>
           </ion-col>
         </ng-container>
+        <ion-infinite-scroll *ngIf="countriesOnPage.length < filtredCountries.length" (ionInfinite)="displayCountries($event)">
+          <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
       </ion-row>
     </ion-col>
   </ion-row>

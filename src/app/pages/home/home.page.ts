@@ -7,8 +7,10 @@ import * as data from '../../../assets/api/data.json';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  countries: any = (data as any).default;
-  countriesFiltred: any = this.countries;
+  allCountries: any = (data as any).default;
+  filtredCountries: any = this.allCountries;
+  countriesOnPage: any = this.filtredCountries.slice(0,25);
+
   filterParams: any = {
     searchbar: '',
     region: 'all'
@@ -19,7 +21,18 @@ export class HomePage implements OnInit {
 
   filter () {
     (this.filterParams.region != 'all')
-    ? this.countriesFiltred = this.countries.filter((country: any) => country.region === this.filterParams.region && country.name.toLowerCase().startsWith(this.filterParams.searchbar))
-    : this.countriesFiltred = this.countries.filter((country: any) => country.name.toLowerCase().startsWith(this.filterParams.searchbar))
-  }
+    ? this.filtredCountries = this.allCountries.filter((country: any) => country.region === this.filterParams.region && country.name.toLowerCase().startsWith(this.filterParams.searchbar))
+    : this.filtredCountries = this.allCountries.filter((country: any) => country.name.toLowerCase().startsWith(this.filterParams.searchbar))
+    this.countriesOnPage = this.filtredCountries.slice(0,25);
+  };
+
+  displayCountries(event: any) {
+    setTimeout(() => {
+      this.countriesOnPage = this.filtredCountries.slice(0, this.countriesOnPage.length + 25);
+      event.target.complete();
+      console.log(this.allCountries);
+      console.log(this.filtredCountries);
+      console.log(this.countriesOnPage);
+    }, 500);
+  };
 }

@@ -1,0 +1,84 @@
+<ion-content [fullscreen]="true">
+  <ion-row class="ion-justify-content-center content">
+    <ion-col size="11">
+      <ion-row class="ion-justify-content-between">
+        <ion-col size="4">
+          <ion-button routerLink="" [state]="" class="back-btn">
+            <ion-icon slot="start" name="arrow-back"></ion-icon>
+            <ion-text slot="end">
+              <p>Back</p>
+            </ion-text>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-between country">
+        <ion-col size="12" sizeMd="6" sizeLg="5">
+          <img class="country__flag" src="{{ country.flags.svg }}" alt="{{ country.name }}">
+        </ion-col>
+        <ion-col size="12" sizeLg="6">
+          <ion-row>
+            <ion-col size="12">
+              <ion-text>
+                <h1>{{ country.name }}</h1>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" sizeMd="6">
+              <ion-text>
+                <p><b>Native name: </b>{{country.nativeName}}</p>
+              </ion-text>
+              <ion-text>
+                <p><b>Population: </b>{{country.population}}</p>
+              </ion-text>
+              <ion-text>
+                <p><b>Region: </b>{{country.region}}</p>
+              </ion-text>
+              <ion-text>
+                <p><b>Sub Region: </b>{{country.subregion}}</p>
+              </ion-text>
+              <ion-text>
+                <p><b>Capital: </b>{{country.capital}}</p>
+              </ion-text>
+            </ion-col>
+            <ion-col size="12" sizeMd="6">
+              <ion-text>
+                <p><b>Top level domain: </b>
+                <ng-container *ngFor="let domain of country.topLevelDomain">
+                  {{ domain }} 
+                </ng-container>
+                </p>
+              </ion-text>
+              <ion-text>
+                <p><b>Currencies: </b>
+                <ng-container *ngFor="let currencie of country.currencies">
+                  {{ currencie.name }}
+                </ng-container>
+                </p>
+              </ion-text>
+              <ion-text>
+                <p><b>Languages: </b>
+                <ng-container *ngFor="let language of country.languages">
+                  {{ language.name }}
+                </ng-container>
+                </p>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-text>
+                <b>Border Countries: </b>
+              </ion-text>
+              <ng-container *ngFor="let borderCountry of country.borders">
+                <ion-chip class="border-countries__country">
+                  <ion-label>{{ borderCountry }}</ion-label>
+                </ion-chip>
+              </ng-container>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>
