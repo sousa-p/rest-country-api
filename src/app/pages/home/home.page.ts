@@ -30,9 +30,6 @@ export class HomePage implements OnInit {
     setTimeout(() => {
       this.countriesOnPage = this.filtredCountries.slice(0, this.countriesOnPage.length + 25);
       event.target.complete();
-      console.log(this.allCountries);
-      console.log(this.filtredCountries);
-      console.log(this.countriesOnPage);
     }, 500);
   };
 }
