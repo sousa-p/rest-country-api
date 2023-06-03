@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'country',
+    path: 'country/:name',
     loadChildren: () => import('./pages/country/country.module').then( m => m.CountryPageModule)
   },
 ];

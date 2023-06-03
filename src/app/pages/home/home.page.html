@@ -35,7 +35,7 @@
             ></app-pais-card>
           </ion-col>
         </ng-container>
-        <ion-infinite-scroll *ngIf="countriesOnPage.length < filtredCountries.length" (ionInfinite)="displayCountries($event)">
+        <ion-infinite-scroll *ngIf="countriesOnPage && countriesOnPage.length < filtredCountries.length" (ionInfinite)="displayCountries($event)">
           <ion-infinite-scroll-content></ion-infinite-scroll-content>
         </ion-infinite-scroll>
       </ion-row>

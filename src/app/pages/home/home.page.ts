@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as data from '../../../assets/api/data.json';
+import { CountriesService } from 'src/app/services/countries.service';
 
 @Component({
   selector: 'app-home',
@@ -7,17 +7,31 @@ import * as data from '../../../assets/api/data.json';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  allCountries: any = (data as any).default;
-  filtredCountries: any = this.allCountries;
-  countriesOnPage: any = this.filtredCountries.slice(0,25);
+  allCountries?: any;
+  filtredCountries?: any;
+  countriesOnPage?: any;
 
   filterParams: any = {
     searchbar: '',
     region: 'all'
-  }
-  constructor() { }
+  };
 
-  ngOnInit() {}
+  loading: boolean = true;
+  constructor(private countriesService: CountriesService) { }
+
+  ngOnInit() {
+    this.countriesService.getCoutries().subscribe(
+      countries => {
+        this.allCountries! = countries
+        this.filtredCountries! = this.allCountries;
+        this.countriesOnPage! = this.filtredCountries.slice(0,25);
+        this.loading = false;
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
 
   filter () {
     (this.filterParams.region != 'all')
