@@ -68,11 +68,11 @@
           <ion-row>
             <ion-col size="12">
               <ion-text>
-                <b>Border Countries: </b>
+                <b>Border Countries: </b><span *ngIf="!borderCountries.length">None</span>
               </ion-text>
-              <ng-container *ngFor="let borderCountry of country?.borders">
-                <ion-chip class="border-countries__country">
-                  <ion-label>{{ borderCountry }}</ion-label>
+              <ng-container *ngFor="let border of borderCountries">
+                <ion-chip class="border-countries__country" routerLink="/country/{{border.name}}">
+                  <ion-label>{{ border.name }}</ion-label>
                 </ion-chip>
               </ng-container>
             </ion-col>

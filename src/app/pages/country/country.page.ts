@@ -11,6 +11,7 @@ import { CountriesService } from 'src/app/services/countries.service';
 export class CountryPage implements OnInit {
   constructor(private router: ActivatedRoute, private countriesService: CountriesService) {}
   country: any = {};
+  borderCountries: any = [];
   name?: string;
   loading: boolean = true;
   
@@ -20,7 +21,18 @@ export class CountryPage implements OnInit {
         country => {
           const response: any = country;
           this.country = response[0];
-          this.loading = false;
+
+          (this.country.borders)
+          ? this.countriesService.getBorderCountriesByAphaCode(this.country.borders).subscribe (
+            borders => {
+              this.borderCountries = borders;
+              this.loading = false;
+            },
+            error => {
+              console.error(error);
+            }
+          )
+          : this.loading = false;
         },
         error => {
           console.error(error);
